@@ -1,11 +1,18 @@
 class Solution:
 	def twoSum(self, arr, target):
 		# code here
-		seen = {}
-        for i, num in enumerate(arr):
-            complement = target - num
-            if complement in seen:
-                return [seen[complement], i]
-            seen[num] = i
-	
-		
+		arr.sort()
+        left = 0
+        right = len(arr) - 1
+
+        while left < right:
+            current_sum = arr[left] + arr[right]
+
+            if current_sum == target:
+                return True       
+            elif current_sum > target:
+                right -= 1        
+            else:
+                left += 1         
+
+        return False
